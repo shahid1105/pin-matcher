@@ -29,7 +29,7 @@ document.getElementById('calculator').addEventListener('click', function (event)
         if (character === 'C') {
             typedNumberField.value = '';
         }
-        else if(character === '<'){
+        else if (character === '<') {
             const digits = previousTypedCharacter.split('');
             digits.pop();
             const remainingDigits = digits.join('');
@@ -42,7 +42,7 @@ document.getElementById('calculator').addEventListener('click', function (event)
     }
 })
 
-document.getElementById('submit-btn').addEventListener('click', function(){
+document.getElementById('submit-btn').addEventListener('click', function () {
     const displayFieldPin = document.getElementById('display-pin');
     const currentPin = displayFieldPin.value;
 
@@ -51,13 +51,24 @@ document.getElementById('submit-btn').addEventListener('click', function(){
 
     const pinSuccess = document.getElementById('pin-success');
     const pinUnSuccess = document.getElementById('pin-unsuccess');
-    
-    if(typeNumber === currentPin){
+
+    if (typeNumber === currentPin) {
         pinSuccess.style.display = 'block';
         pinUnSuccess.style.display = 'none';
     }
-    else{
+    else {
         pinUnSuccess.style.display = 'block';
         pinSuccess.style.display = 'none';
     }
+
+
+    if (typeNumber != currentPin) {
+        const remainingPin = document.getElementById('remaining-pin');
+        const remainingPinString = remainingPin.innerText;
+        const pinRang = remainingPinString - 1;
+        remainingPin.innerText = pinRang;
+    }
+    // if(remainingPin.innerText <= 1){
+    //     typedNumberField.value = '';
+    // }
 })
